@@ -6,10 +6,10 @@ $(function(){
     exportplayer();
   });
 
-  $(".___player-display-screen___2uuQ5.___player-display-screen___3T4yr").attr("id", "nicoliveplayer_capture")
+  $(".___player-display-screen___2uuQ5.___player-display-screen___3T4yr").attr("id", "nicoliveplayer_capture");
+
 
   function exportplayer(){
-    
     //レイヤー取得
     var targetvideo = document.querySelector('[class^=___video-layer___] video');
     var targetcomment = document.querySelector('[class^=___comment-layer___] canvas');
