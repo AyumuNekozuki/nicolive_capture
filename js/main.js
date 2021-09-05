@@ -8,46 +8,36 @@ $(function(){
 
   $(".___player-display-screen___2uuQ5.___player-display-screen___3T4yr").attr("id", "nicoliveplayer_capture");
 
-
   function exportplayer(){
     //レイヤー取得
-    var targetvideo = document.querySelector('[class^=___video-layer___] video');
-    var targetcomment = document.querySelector('[class^=___comment-layer___] canvas');
-    var targetakashic = document.querySelector('#akashic-gameview canvas');
+    var target_video = document.querySelector('[class^=___video-layer___] video');
+    var target_comment = document.querySelector('[class^=___comment-layer___] canvas');
+    var target_akashic = document.querySelector('#akashic-gameview div[style*="z-index: 0"] canvas');
 
-    if (targetvideo) {
+    if (target_video) {
       //初期化
       var canvas = document.createElement('canvas');
-      canvas.setAttribute('width', 1920);
-      canvas.setAttribute('height', 1080);
+      canvas.crossOrigin = "Anonymous";
+      canvas.setAttribute('width', 1280);
+      canvas.setAttribute('height', 720);
       var context = canvas.getContext('2d');
       context.fillRect(0, 0, canvas.width, canvas.height);
 
-      var canvas2 = document.createElement('canvas');
-      canvas2.setAttribute('width', 1920);
-      canvas2.setAttribute('height', 1080);
-      var context2 = canvas.getContext('2d');
-      context2.fillRect(0, 0, canvas2.width, canvas2.height);
-
-
       //映像取得
-      context.drawImage(targetvideo, 0, 0, canvas.width, canvas.height);
+      context.drawImage(target_video, 0, 0, canvas.width, canvas.height);
       //コメントレイヤー取得
-      context.drawImage(targetcomment, 0, 0, canvas.width, canvas.height);
+      context.drawImage(target_comment, 0, 0, canvas.width, canvas.height);
+      //アカシックレイヤー取得
+      if(target_akashic){
+        //context.drawImage(target_akashic, 0, 0, canvas.width, canvas.height);
+      }
+      
+      $("#nicolivecap_export_area").append(canvas);
 
       var image = new Image();
+      image.setAttribute('crossOrigin', 'anonymous');
       image.src = canvas.toDataURL('image/png');
-
-      /* 上手く動かないのでコメントアウト
-      context2.drawImage(image, 0, 0, canvas2.width, canvas2.height);
-
-      アカシックレイヤー　
-      context2.drawImage(targetcomment, 0, 0, canvas2.width, canvas2.height);
-
-      var image2 = new Image();
-      image2.src = canvas2.toDataURL('image/png');
-      */
-
+      
       //タイトル取得
       var liveid = location.pathname.substr(7);
       var title = $('h1[class*="___program-title___"] span').text();

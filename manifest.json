@@ -10,7 +10,8 @@
                 "https://live.nicovideo.jp/watch/*"
             ],
             "js": [
-                "js/jquery-3.5.1.min.js", 
+                "js/jquery-3.5.1.min.js",
+                "js/html2canvas.min.js", 
                 "js/main.js"
             ]
         }
