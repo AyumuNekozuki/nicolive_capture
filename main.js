@@ -9,30 +9,56 @@ $(function(){
   $(".___player-display-screen___2uuQ5.___player-display-screen___3T4yr").attr("id", "nicoliveplayer_capture")
 
   function exportplayer(){
-    /*
-    html2canvas(document.querySelector("#nicoliveplayer_capture")).then(canvas => { 
-      let downloadEle = document.createElement("a");
-      downloadEle.href = canvas.toDataURL("image/png");
-      downloadEle.download = "canvas.png";
-      downloadEle.click();
-    });
-    */
     
-    var video = document.querySelector('video');
-    if (video) {
+    //レイヤー取得
+    var targetvideo = document.querySelector('[class^=___video-layer___] video');
+    var targetcomment = document.querySelector('[class^=___comment-layer___] canvas');
+    var targetakashic = document.querySelector('#akashic-gameview canvas');
+
+    if (targetvideo) {
+      //初期化
       var canvas = document.createElement('canvas');
-      canvas.width = video.clientWidth; canvas.height = video.clientHeight;
+      canvas.setAttribute('width', 1920);
+      canvas.setAttribute('height', 1080);
       var context = canvas.getContext('2d');
-      context.drawImage(video, 0, 0, canvas.width, canvas.height);
-      
+      context.fillRect(0, 0, canvas.width, canvas.height);
+
+      var canvas2 = document.createElement('canvas');
+      canvas2.setAttribute('width', 1920);
+      canvas2.setAttribute('height', 1080);
+      var context2 = canvas.getContext('2d');
+      context2.fillRect(0, 0, canvas2.width, canvas2.height);
+
+
+      //映像取得
+      context.drawImage(targetvideo, 0, 0, canvas.width, canvas.height);
+      //コメントレイヤー取得
+      context.drawImage(targetcomment, 0, 0, canvas.width, canvas.height);
+
       var image = new Image();
       image.src = canvas.toDataURL('image/png');
+
+      /* 上手く動かないのでコメントアウト
+      context2.drawImage(image, 0, 0, canvas2.width, canvas2.height);
+
+      アカシックレイヤー　
+      context2.drawImage(targetcomment, 0, 0, canvas2.width, canvas2.height);
+
+      var image2 = new Image();
+      image2.src = canvas2.toDataURL('image/png');
+      */
+
+      //タイトル取得
+      var liveid = location.pathname.substr(7);
+      var title = $('h1[class*="___program-title___"] span').text();
+      var playtime = ($('[class*="___elapsed-time___"] span[class*="___value___"]').text());
+
       var a = document.createElement('a');
-      a.download = `${location.host}_${new Date().toISOString()}.png`;
+      a.download = `${liveid}_${playtime}_${title}.png`;
       a.target = '_blank';
       a.href = image.src; a.click();
     } else {
-      alert('There is no video tag.'); 
+      alert('Error! 画像の出力に失敗しました'); 
     }
     
   }
