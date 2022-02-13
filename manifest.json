@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
-    "name": "nicocapture",
+    "name": "にこきゃぷ",
     "version": "0.0.2",
-    "description": "ニコ生をキャプチャして画像にする拡張",
+    "description": "ニコ生のスクリーンショットを撮ろう！",
     "content_scripts": [
         {
             "matches": [
@@ -13,6 +13,9 @@
                 "js/jquery-3.5.1.min.js",
                 "js/html2canvas.min.js", 
                 "js/main.js"
+            ],
+            "css": [
+              "css/main.css"
             ]
         }
     ],

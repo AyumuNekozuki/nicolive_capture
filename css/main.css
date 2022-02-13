@@ -1,0 +1,36 @@
+#nicocap{
+  background-color: #fafafa;
+  border-radius: 10px;
+  padding: 3px 10px;
+  margin-bottom: 15px;
+  position: relative;
+}
+#nicocap p.title{
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 3px;
+  border-bottom: 1px solid #ccc;
+}
+#nicocap div.body{
+  height: 200px;
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+#nicocap div.body canvas{
+  margin: 3px;
+  aspect-ratio: 16 / 9 !important;
+}
+
+#nicocap div.overlay{
+  position: absolute;
+  top: 23px;
+  width: calc(100% - 20px);
+  height: calc(100% - 23px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #fafafacc;
+}
