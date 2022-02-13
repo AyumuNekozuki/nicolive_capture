@@ -6,10 +6,6 @@ $(function(){
 
   $("[class*='___program-information-main-area___']").prepend('<div id="nicocap"><p class="title">にこきゃぷ</p><div class="body"></div><div class="overlay"><p>一部の番組ではスクショが禁止されています。<br>この放送はスクショが許可されていますか？</p><button id="nicocap_ok">はい</button></div></div>');
 
-  var type = document.querySelector("[class*='___program-provider-type-label___']");
-  if(!type){
-    $("#nicocap .overlay").remove();
-  }
   $('#nicocap_ok').on('click', () => {
     $('#nicocap div.overlay').remove();
   })
