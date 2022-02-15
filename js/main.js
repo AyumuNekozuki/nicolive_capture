@@ -24,6 +24,7 @@ $(function(){
     var target_video = document.querySelector('[class^=___video-layer___] video');
     var target_comment = document.querySelector('[class^=___comment-layer___] canvas');
     var target_gift = document.querySelector('#akashic-gameview div[style*="z-index: -100"] canvas');
+    var target_cruise = document.querySelector('#akashic-gameview div[style*="z-index: 0"] canvas');
     var target_akashic = document.querySelector('#akashic-gameview div[style*="z-index: 1"] canvas');
 
     if (target_video) {
@@ -41,6 +42,10 @@ $(function(){
       context.drawImage(target_comment, 0, 0, canvas.width, canvas.height);
       // ギフトレイヤー取得
       context.drawImage(target_gift, 0, 0, canvas.width, canvas.height);
+      // クルーズレイヤー?取得
+      if(target_cruise){
+        context.drawImage(target_cruise, 0, 0, canvas.width, canvas.height);
+      }
       //アカシックレイヤー取得
       if(target_akashic){
         context.drawImage(target_akashic, 0, 0, canvas.width, canvas.height);
